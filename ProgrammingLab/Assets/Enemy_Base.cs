@@ -7,11 +7,10 @@ public class Enemy_Base : MonoBehaviour
     public float health;
     public float damage;
     public float speed;
+    public GameObject player;
 
-    public virtual void Stats()
+    public virtual void Movement()
     {
-        health = 1;
-        damage = 1;
-        speed = 1;
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, player.transform.position, Time.deltaTime * speed);
     }
 }

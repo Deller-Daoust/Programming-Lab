@@ -5,8 +5,17 @@ using UnityEngine;
 public class Basic_Enemy : Enemy_Base
 {
     // Start is called before the first frame update
-    public void Enemy()
+    void Start()
     {
-        base.Stats();
+        health = 1;
+        damage = 1;
+        speed = 0.5f;
+
+        player = GameObject.Find("Player");
+    }
+
+    void Update()
+    {
+        base.Movement();
     }
 }
