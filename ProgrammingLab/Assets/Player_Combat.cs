@@ -6,6 +6,10 @@ public class Player_Combat : MonoBehaviour
 {
     private float damage;
 
+    public float hp = 6;
+
+    [SerializeField] private Game_Controller game;
+
     [SerializeField] private GameObject projectilePrefab;
 
     // Start is called before the first frame update
@@ -21,5 +25,12 @@ public class Player_Combat : MonoBehaviour
         {
             Instantiate(projectilePrefab);
         }
+
+        if(hp <= 0)
+        {
+            game.state = Game_Controller.GameState.GameOver;
+        }
+
+        Debug.Log(hp);
     }
 }
