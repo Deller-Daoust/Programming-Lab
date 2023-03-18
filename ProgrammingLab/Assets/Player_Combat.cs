@@ -6,7 +6,7 @@ public class Player_Combat : MonoBehaviour
 {
     private float damage;
 
-    public float hp = 6;
+    public float hp = 5;
 
     [SerializeField] private Game_Controller game;
 
@@ -15,7 +15,8 @@ public class Player_Combat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        HealthPoints = 10;
+        Debug.Log(hp);
     }
 
     // Update is called once per frame
@@ -32,5 +33,14 @@ public class Player_Combat : MonoBehaviour
         }
 
         Debug.Log(hp);
+    }
+
+    public float HealthPoints
+    {
+        get {
+            return hp;
+        } set {
+            hp = value;
+        }
     }
 }
