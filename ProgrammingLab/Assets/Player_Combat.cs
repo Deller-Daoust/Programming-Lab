@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Combat : MonoBehaviour
 {
@@ -12,11 +13,16 @@ public class Player_Combat : MonoBehaviour
 
     [SerializeField] private GameObject projectilePrefab;
 
+    public Text scoreText;
+
+    public Text hpText;
+
+    public int score;
+
     // Start is called before the first frame update
     void Start()
     {
         HealthPoints = 10;
-        Debug.Log(hp);
     }
 
     // Update is called once per frame
@@ -27,12 +33,13 @@ public class Player_Combat : MonoBehaviour
             Instantiate(projectilePrefab);
         }
 
-        if(hp <= 0)
+        hpText.text = $"HP: {HealthPoints}";
+
+        if(HealthPoints <= 0)
         {
             game.state = Game_Controller.GameState.GameOver;
+            Destroy(gameObject);
         }
-
-        Debug.Log(hp);
     }
 
     public float HealthPoints

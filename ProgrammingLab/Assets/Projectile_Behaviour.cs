@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Projectile_Behaviour : MonoBehaviour
 {
@@ -29,8 +30,17 @@ public class Projectile_Behaviour : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.name != "Player")
+        if(col.gameObject.name != "Player" && col.gameObject.tag != "Enemy")
         {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Enemy")
+        {
+            col.gameObject.GetComponent<Basic_Enemy>().health -= 1;
             Destroy(gameObject);
         }
     }

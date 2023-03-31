@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Basic_Enemy_Stats
 {
-    public float health = 1;
+    public float health = 5;
     public float speed = 0.5f;
     public float damage = 1;
 

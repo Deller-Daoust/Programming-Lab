@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Basic_Enemy : Enemy_Base
 {
@@ -26,13 +27,20 @@ public class Basic_Enemy : Enemy_Base
         stats.SpeedCheck();
 
         base.Movement();
+
+        if(health <= 0)
+        {
+            p_combat.score += 1;
+            p_combat.scoreText.text = $"Score: {player.GetComponent<Player_Combat>().score}";
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.name == "Player")
         {
-            p_combat.hp -= damage;
+            p_combat.HealthPoints = p_combat.hp - damage;
         }
     }
 }
