@@ -8,6 +8,14 @@ public class GenericScript : MonoBehaviour
     private float[] num2 = {1.1f, 2.2f, 3.3f};
     private string[] num3 = {"1", "2", "3"};
 
+    public void KeyPressCheck<Key>(Key[] array)
+    {
+        foreach(Key info in array)
+        {
+            Debug.Log(info);
+        }
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
@@ -22,13 +30,5 @@ public class GenericScript : MonoBehaviour
         {
             KeyPressCheck(num3);
         }
-    }
-
-    public void KeyPressCheck<Key>(Key[] array)
-    {
-        foreach(Key info in array)
-        {
-            Debug.Log(info);
-        }
-    }
+    }    
 }
